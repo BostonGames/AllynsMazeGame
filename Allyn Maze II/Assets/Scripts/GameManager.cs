@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public IntVector2 iSize;
 
+    [SerializeField] GameObject startUI;
+
     [SerializeField] GameObject Player;
     public GameObject mazeGoalTarget;
     public bool mazeIsGenerated;
@@ -29,7 +31,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        BeginGame();
+        
     }
 
 
@@ -58,6 +60,7 @@ public class GameManager : MonoBehaviour
        mazeInstance = Instantiate(mazePrefab) as Maze;
 
         StartCoroutine(mazeInstance.Generate());
+        startUI.SetActive(false);
     }
 
     public void BeginMaze()
@@ -65,6 +68,7 @@ public class GameManager : MonoBehaviour
         mazeIsGenerated = true;
         
     }
+
 
     public void RestartGame()
     {
@@ -82,5 +86,6 @@ public class GameManager : MonoBehaviour
         BeginGame();
         mazeIsGenerated = false;
         goalIsPlaced = false;
+      
     }
 }
