@@ -2,16 +2,14 @@ Allyn Alves - Strange Loop Games Unity Project
 
 Unity Version Used: 2021.1.14f1
 
+**Will be Updated as Game is Finished**
+Git Repository: https://github.com/BostonGames/AllynsMazeGame
 
-Git Repository:
 
+HOW TO PLAY:
 Download and play here: https://drive.google.com/drive/folders/1D59V6dkl2g76kFWJe6E_EWa06d86hy5b?usp=sharing
--Open "fileName.exe" to play!
-
-
-
-Play in Your Browser Here: 
-
+-Open the "AllynMaze_V0.1" folder
+-Open "Allyn Maze.exe" to play!
 
 
 

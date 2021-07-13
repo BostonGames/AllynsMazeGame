@@ -32,12 +32,21 @@ public class Maze : MonoBehaviour
     }
 
     //will take two values as coordinates to instantiate a clone maze cell
-    private void CreateCell(IntVector2)
+    private void CreateCell(IntVector2 a_Coordinates)
     {
         MazeCell newCell = Instantiate(mazeCellPrefab) as MazeCell;
+
         //place new cell into array
-        cells[a_Coordinates.x, a_Coordinatess.z] = newCell; 
-        newCell.iCoordinates
-            // keep track of cells according to position in the grid
+        cells[a_Coordinates.x, a_Coordinates.z] = newCell;
+        newCell.iCoordinates = a_Coordinates;
+
+        // keep track of cells according to position in the grid
+        newCell.name = "MazeCell " + a_Coordinates.x + " , " + a_Coordinates.z;
+
+        //set position and make a child of the maze
+        newCell.transform.parent = transform;
+        // make cell align within the grid
+        // using 0.5 because it is half of the cell (which is 1), so it will align the entire grid at center
+        newCell.transform.localPosition = new Vector3(a_Coordinates.x - iSize.x * 0.5f + 0.5f, 0f, a_Coordinates.z - iSize.z * 0.5f + 0.5f);
     }
 }

@@ -43,6 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b9af2ad39947fa4b9ec7ab860d6dea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iSizeX: 0
-  iSizeZ: 0
+  iSize:
+    x: 10
+    z: 10
   mazeCellPrefab: {fileID: 3560857414832070480, guid: f247c331e635f01408871b537864b873, type: 3}
+  fGenerationStepDelay: 0.06
