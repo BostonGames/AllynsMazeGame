@@ -10,6 +10,17 @@ public class MazeCell : MonoBehaviour
     // this will be 4 since there are 4 edges to a cell
     private MazeCellEdge[] edges = new MazeCellEdge[MazeDirections.Count];
 
+
+    private void OnMouseDown()
+    {
+        if (GameManager.instance.mazeIsGenerated && !GameManager.instance.goalIsPlaced)
+        {
+            Vector3 spawnPos = transform.position;
+            GameManager.instance.SpawnGoal(spawnPos);
+            GameManager.instance.goalIsPlaced = true;
+        }
+    }
+
     public MazeCellEdge GetEdge (MazeDirection a_Direction)
     {
         return edges[(int)a_Direction];

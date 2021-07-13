@@ -6,7 +6,14 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public IntVector2 iSize;
-    
+
+    [SerializeField] GameObject Player;
+    public GameObject mazeGoalTarget;
+    public bool mazeIsGenerated;
+    public bool goalIsPlaced;
+    public Vector3 offset = new Vector3(0f, 0.4f, 0f);
+
+
     public MazeCell mazeCellPrefab;
     private MazeCell mazeCellInstance;
     private MazeCell[,] cells;
@@ -25,6 +32,7 @@ public class GameManager : MonoBehaviour
         BeginGame();
     }
 
+
     // Update is called once per frame
     void Update()
     {
@@ -33,6 +41,17 @@ public class GameManager : MonoBehaviour
             RestartGame();
         }
     }
+
+    public void SpawnPlayer(Vector3 spawnPos)
+    {
+        Instantiate(Player, spawnPos + offset, Quaternion.identity);
+    }
+
+    public void SpawnGoal(Vector3 spawnPos)
+    {
+        Instantiate(mazeGoalTarget, spawnPos + offset, Quaternion.identity);
+    }
+
 
     public void BeginGame()
     {
@@ -43,13 +62,25 @@ public class GameManager : MonoBehaviour
 
     public void BeginMaze()
     {
-        Debug.Log("Maze Successfully Generated");
+        mazeIsGenerated = true;
+        
     }
 
     public void RestartGame()
     {
+        if (mazeIsGenerated)
+        {
+            Destroy(GameObject.FindWithTag("Player"));
+        }
+        if (goalIsPlaced)
+        {
+            Destroy(GameObject.FindWithTag("Goal"));
+        }
+
         StopAllCoroutines();
         Destroy(mazeInstance.gameObject);
         BeginGame();
+        mazeIsGenerated = false;
+        goalIsPlaced = false;
     }
 }

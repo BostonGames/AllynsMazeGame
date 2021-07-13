@@ -7,8 +7,6 @@ public class Maze : MonoBehaviour
     public IntVector2 iSize;
 
     public Vector3 spawnPos;
-    [SerializeField] Vector3 playerOffset;
-    [SerializeField] GameObject Player;
 
     public MazePassage mazePassagePrefab;
     public MazeWall mazeWallPrefab;
@@ -35,18 +33,17 @@ public class Maze : MonoBehaviour
 
         if(activeCells.Count == 0)
         {
-            GameManager.instance.BeginMaze();
-            SpawnPlayer();
-            
+            MazeFinished();
         }
     }
 
-    private void SpawnPlayer()
+    private void MazeFinished()
     {
-        Instantiate(Player, spawnPos, Quaternion.identity);
+        GameManager.instance.BeginMaze();
+        GameManager.instance.SpawnPlayer(spawnPos);
     }
 
-    
+
     private MazeCell CreateCell(IntVector2 a_Coordinates)
     {
         MazeCell newCell = Instantiate(mazeCellPrefab) as MazeCell;

@@ -388,12 +388,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8720906903701588264, guid: 6e9ab720b64b1c94a840b9946fed323e, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 8239880032589810968, guid: 5d0b8d29d327cef4f95fcc0b309232ab, type: 3}
+    - target: {fileID: 8720906903701588264, guid: 6e9ab720b64b1c94a840b9946fed323e, type: 3}
       propertyPath: mazePrefab
       value: 
       objectReference: {fileID: 6316864182041809046, guid: 1e33cd0657fc51a4e9bb120eeae454be, type: 3}
     - target: {fileID: 8720906903701588264, guid: 6e9ab720b64b1c94a840b9946fed323e, type: 3}
+      propertyPath: goalOffset.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8720906903701588264, guid: 6e9ab720b64b1c94a840b9946fed323e, type: 3}
       propertyPath: mazeCellPrefab
       value: 
       objectReference: {fileID: 6047509905472185316, guid: f66969716e3aded49a40e5ccbc579ea0, type: 3}
+    - target: {fileID: 8720906903701588264, guid: 6e9ab720b64b1c94a840b9946fed323e, type: 3}
+      propertyPath: mazeGoalTarget
+      value: 
+      objectReference: {fileID: 5290728806419026135, guid: ee221be55b71a6e42bd33d19ef8e6cdc, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e9ab720b64b1c94a840b9946fed323e, type: 3}
