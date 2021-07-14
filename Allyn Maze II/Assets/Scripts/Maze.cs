@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Maze : MonoBehaviour
 {
+    public static Maze instance;
     public IntVector2 iSize;
 
     public Vector3 spawnPos;
@@ -11,9 +12,16 @@ public class Maze : MonoBehaviour
     public MazePassage mazePassagePrefab;
     public MazeWall mazeWallPrefab;
     public MazeCell mazeCellPrefab;
+
     private MazeCell[,] cells;
 
+
     public float fGenerationStepDelay;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     public IEnumerator Generate()
     {
