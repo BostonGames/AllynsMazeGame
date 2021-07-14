@@ -8,7 +8,7 @@ Git Repository: https://github.com/BostonGames/AllynsMazeGame
 
 HOW TO PLAY:
 Download and play here: https://drive.google.com/drive/folders/1D59V6dkl2g76kFWJe6E_EWa06d86hy5b?usp=sharing
--Open and Download the "AllynMaze_V0.1" folder
+-Open and Download the "AllynMaze_V0.2" folder ( or latest version available )
 -Open "Allyn Maze.exe" to play!
 
 
