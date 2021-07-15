@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   iSize:
-    x: 10
-    z: 10
+    x: 5
+    z: 5
   spawnPos: {x: 0, y: 0, z: 0}
   mazePassagePrefab: {fileID: 3469849679179010187, guid: 6fa5d6c33d7527743b9bdee64887fc65, type: 3}
   mazeWallPrefab: {fileID: 1300533979169395191, guid: 603c85b1820235948880017431043df6, type: 3}
