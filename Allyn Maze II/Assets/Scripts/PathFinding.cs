@@ -6,7 +6,6 @@ using System.Diagnostics;
 public class PathFinding : MonoBehaviour
 {
     // both the GridForPathfinding and Pathfinding script need to be on the same GameObject in the Heirarchy to work
-    // ther is probably a cleaner way to do this, but for now:
     GridForPathfinding grid;
     public GameObject seeker, target;
 
@@ -130,6 +129,21 @@ public class PathFinding : MonoBehaviour
 
         grid.path = path;
     }
+
+    public void VisualizePath()
+    {
+        List<Node> _path = GridForPathfinding.instance.path;
+        float _nodeDiameter = GridForPathfinding.instance.nodeDiameter;
+
+        if (_path != null)
+        {
+            foreach (Node n in _path)
+            {
+                Instantiate(GameManager.instance.waypointDot, n.worldPosition, Quaternion.identity);
+            }
+        }
+    }
+
 
     int GetDistance(Node nodeA, Node nodeB)
     {

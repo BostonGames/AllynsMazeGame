@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject Player;
     public GameObject mazeGoalTarget;
+    public GameObject waypointDot;
+
     public bool mazeIsGenerated;
     public bool goalIsPlaced;
     public Vector3 offset = new Vector3(0f, 0.4f, 0f);

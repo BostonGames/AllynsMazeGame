@@ -37,4 +37,6 @@ public class PlayerMovement : MonoBehaviour
             GameManager.instance.RestartGame();
         }
     }
+
+
 }

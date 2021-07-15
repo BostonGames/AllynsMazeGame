@@ -5,18 +5,21 @@ using UnityEngine;
 public class GridForPathfinding : MonoBehaviour
 {
     // FORTESTING public Transform playerPlaceholder;
-    
+    public static GridForPathfinding instance;
 
     public bool onlyDisplayPath;
-    
     private Node[,] grid;
  
     private Vector2 gridWorldSize;
     public float nodeRadius;
-    private float nodeDiameter;
+    public float nodeDiameter;
     private int gridSizeX, gridSizeY;
     public LayerMask unWalkableMask;
 
+    private void Awake()
+    {
+          instance = this;
+    }
 
     public List<Node> path;
     private void OnDrawGizmos()
@@ -56,12 +59,12 @@ public class GridForPathfinding : MonoBehaviour
                         }
                     }
 
-                    // canDelete FORTESTING
+                    // FORTESTING
                     // make Player node a different color
-                  // if (playerNode == n)
-                  // {
-                  //     Gizmos.color = new Color(0, 1, 1, 0.5f);
-                  // }
+                    // if (playerNode == n)
+                    // {
+                    //     Gizmos.color = new Color(0, 1, 1, 0.5f);
+                    // }
 
 
 
