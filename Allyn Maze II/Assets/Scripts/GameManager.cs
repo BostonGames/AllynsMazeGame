@@ -38,7 +38,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
+        // TODO change this call method to a button or something. 
+        if (Input.GetKey(KeyCode.G))
         {
             RestartGame();
         }

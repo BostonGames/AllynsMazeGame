@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class GridForPathfinding : MonoBehaviour
 {
-    // canDelete FORTESTING 
-    public Transform playerPlaceholder;
+    // FORTESTING public Transform playerPlaceholder;
+    
+
+    public bool onlyDisplayPath;
     
     private Node[,] grid;
  
@@ -23,40 +25,54 @@ public class GridForPathfinding : MonoBehaviour
         gridWorldSize.y = Maze.instance.iSize.z;
         Gizmos.DrawWireCube(Vector3.zero, new Vector3(gridWorldSize.x, 1, gridWorldSize.y));
 
-
-
-        if (grid != null)
+        if (onlyDisplayPath)
         {
-            // have the pathfinding detect where the Player is
-            // canDelete FORTESTING 
-            Node playerNode = NodeFromWorldPoint(playerPlaceholder.position);
-
-            foreach (Node n in grid)
+            if(path != null)
             {
-                // visualize what is walkable 
-                Gizmos.color = (n.walkable ? new Color(0, 0, 1, 0.5f) : new Color(1, 0, 0, 0.5f));
-                if (path != null)
+                foreach(Node n in path)
                 {
-                    if (path.Contains(n))
-                    {
-                        Gizmos.color = new Color(0, 1, 0, 0.5f);
-                    }
+                    Gizmos.color = new Color(0, 1, 0, 0.5f);
+                    Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter - 0.1f));
                 }
-
-                // canDelete FORTESTING
-                // make Player node a different color
-                if (playerNode == n)
-                {
-                    Gizmos.color = new Color(0, 1, 1, 0.5f);
-                }
-
-
-
-
-                // so the cube is the size of the node, and leave a little room for the walls
-                Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter - 0.1f));
             }
         }
+        else
+        {
+            if (grid != null)
+            {
+                // have the pathfinding detect where the Player is
+                // FORTESTING Node playerNode = NodeFromWorldPoint(playerPlaceholder.position);
+                
+
+                foreach (Node n in grid)
+                {
+                    // visualize what is walkable 
+                    Gizmos.color = (n.walkable ? new Color(0, 0, 1, 0.5f) : new Color(1, 0, 0, 0.5f));
+                    if (path != null)
+                    {
+                        if (path.Contains(n))
+                        {
+                            Gizmos.color = new Color(0, 1, 0, 0.5f);
+                        }
+                    }
+
+                    // canDelete FORTESTING
+                    // make Player node a different color
+                  // if (playerNode == n)
+                  // {
+                  //     Gizmos.color = new Color(0, 1, 1, 0.5f);
+                  // }
+
+
+
+
+                    // so the cube is the size of the node, and leave a little room for the walls
+                    Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter - 0.1f));
+                }
+            }
+
+        }
+
     }
 
     public Node NodeFromWorldPoint(Vector3 worldPos)
@@ -136,6 +152,14 @@ public class GridForPathfinding : MonoBehaviour
 
         return neighbors;
 
+    }
+
+    public int MaxSize
+    {
+        get
+        {
+            return gridSizeX * gridSizeY;
+        }
     }
 
 }

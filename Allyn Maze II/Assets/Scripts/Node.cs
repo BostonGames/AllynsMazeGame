@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Node
+public class Node : IHeapItem<Node>
 {
     public bool walkable;
     public Vector3 worldPosition;
@@ -27,6 +27,32 @@ public class Node
         {
             return gCost + hCost;
         }
+    }
+
+    public int heapIndex
+    {
+        get
+        {
+            return heapIndex;
+        }
+        set
+        {
+            heapIndex = value;
+        }
+    }
+
+    public int CompareTo(Node nodeToCompare)
+    {
+        // we want to compare the fCosts of the two nodes 
+        int compare = fCost.CompareTo(nodeToCompare.fCost);
+        // if the two fCosts are equal
+        if(compare == 0)
+        {
+            // returns 1 if int is higher
+            compare = hCost.CompareTo(nodeToCompare.hCost);
+        }
+        // we want to return which node has a Lower hCost though, so reverse the sign to swap the correct node
+        return -compare;
     }
 
 }

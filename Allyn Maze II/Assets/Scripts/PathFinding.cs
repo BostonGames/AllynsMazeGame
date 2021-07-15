@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Diagnostics;
 
 public class PathFinding : MonoBehaviour
 {
@@ -16,27 +17,36 @@ public class PathFinding : MonoBehaviour
     }
 
 
-   // private void OnEnable()
-   // {
-   //     if (GameObject.FindWithTag("Player") && GameObject.FindWithTag("Goal"))
-   //     {
-   //         seeker = GameObject.FindWithTag("Player");
-   //         target = GameObject.FindWithTag("Goal");
-   //     }
-   //     else { Debug.Log("Player and/or Goal have not spawned yet."); }
-   // }
+    private void OnEnable()
+    {
+        if (GameObject.FindWithTag("Player") && GameObject.FindWithTag("Goal"))
+        {
+            seeker = GameObject.FindWithTag("Player");
+            target = GameObject.FindWithTag("Goal");
+        }
+        else { return; }
+    }
 
     private void Update()
     {
-        FindPath(seeker.transform.position, target.transform.position);
+        
+        // TODO call this in a better way
+        if (Input.GetButtonDown("Jump"))
+        {
+            FindPath(seeker.transform.position, target.transform.position);
+        }
     }
 
     private void FindPath(Vector3 startPos, Vector3 goalPos)
     {
+         Stopwatch stopWatch = new Stopwatch();
+         stopWatch.Start();
+        
          Node startNode = grid.NodeFromWorldPoint(startPos);
          Node targetNode = grid.NodeFromWorldPoint(goalPos);
 
          // list of nodes for Open set
+         // **I did not implement the Heap because it kept making my editor crash
          List<Node> openSet = new List<Node>();
          HashSet<Node> closedSet = new HashSet<Node>();
 
@@ -60,8 +70,11 @@ public class PathFinding : MonoBehaviour
             openSet.Remove(currentNode);
             closedSet.Add(currentNode);
 
+            // if we have found the path
             if(currentNode == targetNode)
             {
+                stopWatch.Stop();
+                print("path found in: " + stopWatch.ElapsedMilliseconds + " ms");
                 RetracePath(startNode, targetNode);
                 return;
             }
