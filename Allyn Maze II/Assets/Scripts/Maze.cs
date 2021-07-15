@@ -23,6 +23,7 @@ public class Maze : MonoBehaviour
         instance = this;
     }
 
+
     public IEnumerator Generate()
     {
         WaitForSeconds delay = new WaitForSeconds(fGenerationStepDelay);
@@ -49,6 +50,7 @@ public class Maze : MonoBehaviour
     {
         GameManager.instance.BeginMaze();
         GameManager.instance.SpawnPlayer(spawnPos);
+
     }
 
 

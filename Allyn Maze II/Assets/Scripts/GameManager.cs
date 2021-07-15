@@ -8,6 +8,11 @@ public class GameManager : MonoBehaviour
     public IntVector2 iSize;
 
     [SerializeField] GameObject startUI;
+    [SerializeField] GameObject gameUI;
+    public GameObject gridPathfinder;
+    [SerializeField] GameObject warningMessage;
+
+
 
     [SerializeField] GameObject Player;
     public GameObject mazeGoalTarget;
@@ -43,6 +48,11 @@ public class GameManager : MonoBehaviour
         {
             RestartGame();
         }
+
+        if (goalIsPlaced)
+        {
+            gridPathfinder.SetActive(true);
+        }
     }
 
     public void SpawnPlayer(Vector3 spawnPos)
@@ -62,6 +72,8 @@ public class GameManager : MonoBehaviour
 
         StartCoroutine(mazeInstance.Generate());
         startUI.SetActive(false);
+        gameUI.SetActive(true);
+
     }
 
     public void BeginMaze()
@@ -87,6 +99,13 @@ public class GameManager : MonoBehaviour
         BeginGame();
         mazeIsGenerated = false;
         goalIsPlaced = false;
+        gridPathfinder.SetActive(false);
       
+    }
+
+    public void ShowWarning()
+    {
+        // warning has a self-disabling script and will disappear after x time in the script
+        warningMessage.SetActive(true);
     }
 }

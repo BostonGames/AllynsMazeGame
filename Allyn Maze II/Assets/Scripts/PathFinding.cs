@@ -27,14 +27,17 @@ public class PathFinding : MonoBehaviour
         else { return; }
     }
 
-    private void Update()
+    public void FindPath()
     {
-        
-        // TODO call this in a better way
-        if (Input.GetButtonDown("Jump"))
+        if (GameManager.instance.goalIsPlaced)
         {
             FindPath(seeker.transform.position, target.transform.position);
         }
+        else 
+        {
+            GameManager.instance.ShowWarning();
+        }
+
     }
 
     private void FindPath(Vector3 startPos, Vector3 goalPos)
