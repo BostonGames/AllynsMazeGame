@@ -3,6 +3,7 @@ Allyn Alves - Strange Loop Games Unity Project
 Unity Version Used: 2021.1.14f1
 
 **Will be Updated as Game is Finished**
+June 16 - waiting for a reply on Stack Exchange and Unity Answers for an issue I ran into
 Git Repository: https://github.com/BostonGames/AllynsMazeGame
 
 
